@@ -1,9 +1,9 @@
-#Resilient by Design: Storm Infrastructure vs. Emergency Response
+## Resilient by Design: Storm Infrastructure vs. Emergency Response
 
-#Decision Statement
+## Decision Statement
 Should a municipal emergency coordinator invest limited budget resources in upgraded storm infrastructure to prevent disasters or enhanced emergency response capacity to better manage disasters when they occur, given the increasing frequency and intensity of extreme weather events?
 
-#Executive Summary
+## Executive Summary
 Municipal emergency coordinators across the United States face an increasingly critical strategic dilemma that will define their communities' resilience for decades: allocate scarce resources toward preventing disasters through upgraded infrastructure, or toward managing disasters through enhanced emergency response capabilities. This decision carries profound implications for public safety, economic stability, and community survival as extreme weather events transform from exceptional occurrences into routine threats.
 
 The financial stakes are staggering and accelerating. Since 1980, severe storms have caused over $383 billion in total damages across the United States, with climate change-related events estimated to have cost more than $1.0 trillion over this period. The pace has dramatically intensified—before the 2010s, billion-dollar storms occurred every few years, but 29 of 37 such storms since Hurricane Katrina have occurred in the last decade alone. Most alarmingly, the time between billion-dollar disasters has collapsed from 82 days on average in the 1980s to just 16 days in recent years, and in 2023 that interval shrank to merely 12 days. This compression leaves municipalities with less time and fewer resources to recover between events, forcing emergency coordinators to make impossible choices about where to invest their limited budgets.
@@ -15,6 +15,7 @@ The challenge is further complicated by structural inequities in how disasters a
 
 Recent political developments add uncertainty to an already complex decision. In April 2025, FEMA suspended its Building Resilient Infrastructure and Communities (BRIC) program and Hazard Mitigation Assistance grants, which had provided billions for pre-disaster mitigation projects. The agency also reduced staff and training capacity by 20 percent, limiting coordination capabilities precisely when extreme weather events are intensifying. The cancellation of $1.7 billion in climate preparedness grants represents a policy shift back toward reactive response models and away from preventive infrastructure investment, leaving municipal emergency coordinators uncertain about federal support for either approach.
 
-#Initial Causal Loop Diagram
+## Initial Causal Loop Diagram
 
 ![Draft CLD](img/cld-draft.png)
+
