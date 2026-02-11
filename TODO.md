@@ -1,0 +1,4 @@
+* This is too big of a project given the CLD you offered and the datasets.  Consider pruning.
+* Consider https://data.worldbank.org/indicator/EN.CLC.DRSK.XQ, consider a global view
+* Consider pivoting to UN SDG 11 (Sustainable Cities and Communities) aligns most closely with the World Bank's Disaster Risk Reduction progress score. This indicator measures national performance in multi-hazard risk assessment, early warning systems, and disaster management planning—core aspects of disaster risk reduction ([DRR](https://sdgs.un.org/topics/disaster-risk-reduction))
+* Download some data - I put sample worldbank data in a data folder
