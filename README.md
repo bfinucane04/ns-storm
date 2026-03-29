@@ -15,9 +15,17 @@ The challenge is further complicated by structural inequities in how disasters a
 
 Recent political developments add uncertainty to an already complex decision. In April 2025, FEMA suspended its Building Resilient Infrastructure and Communities (BRIC) program and Hazard Mitigation Assistance grants, which had provided billions for pre-disaster mitigation projects. The agency also reduced staff and training capacity by 20 percent, limiting coordination capabilities precisely when extreme weather events are intensifying. The cancellation of $1.7 billion in climate preparedness grants represents a policy shift back toward reactive response models and away from preventive infrastructure investment, leaving municipal emergency coordinators uncertain about federal support for either approach.
 
+## Milestone 3: Systems Analysis (Path A)
+
+See **[Analysis.md](Analysis.md)** for the full Milestone 3 deliverable, which includes:
+
+- **System Archetype Identification:** Growth and Underinvestment (primary) and Shifting the Burden (secondary), mapped to the storm resilience decision context with supporting evidence
+- **Three Scenario Narratives:** Status Quo (drift into crisis), Infrastructure-First Investment, and Balanced Resilience Portfolio — each tracing system evolution over 5–10 years with reference to CLD feedback loops
+- **Leverage Point Analysis:** Smart grid and sensor technology as a bridge investment that simultaneously improves infrastructure resilience and emergency response effectiveness
+- **Implications for the Decision:** Synthesis connecting the analysis to the emergency coordinator's strategic choice, previewing the Milestone 4 recommendation
+
 ## Initial Causal Loop Diagram
 
 ![Draft CLD](img/cld-draft.png)
 
 https://github.com/bfinucane04/ns-storm.git
-
