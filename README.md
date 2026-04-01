@@ -1,83 +1,151 @@
-## Resilient by Design: Storm Infrastructure vs. Emergency Response
+# Resilient by Design: Storm Infrastructure vs. Emergency Response
 
 ## Decision Statement
+
 Should national policymakers invest limited resources in upgraded storm infrastructure to prevent disasters or enhanced emergency response capacity to better manage disasters when they occur, given the increasing frequency and intensity of extreme weather events and the goals of UN Sustainable Development Goal 11 (Sustainable Cities and Communities)?
 
+---
+
 ## Executive Summary
-Policymakers around the world face an increasingly critical strategic dilemma that will define their communities' resilience for decades: allocate scarce resources toward preventing disasters through upgraded infrastructure, or toward managing disasters through enhanced emergency response capabilities. Framed through the lens of UN SDG 11 — "Make cities and human settlements inclusive, safe, resilient and sustainable" — and the Sendai Framework for Disaster Risk Reduction 2015–2030, this decision carries profound implications for public safety, economic stability, and equitable urban development as extreme weather events transform from exceptional occurrences into routine threats.
 
-The financial stakes are staggering and accelerating at a global scale. Global economic losses from natural catastrophes reached an estimated $417 billion in 2024, a 15% increase above the decade average, with insured losses hitting a record $154 billion. For the first time in history, 21 separate incidents in a single year resulted in multi-billion-dollar insurance claims. The UNDRR's Global Assessment Report 2025 documents that total disaster costs now exceed $2.3 trillion annually when cascading and ecosystem costs are included — a figure that has grown from $70–80 billion per year (1970–2000) to $180–200 billion (2001–2020) in direct costs alone. This acceleration leaves nations with less time and fewer resources to recover between events, forcing policymakers to make impossible choices about where to invest limited budgets.
+Policymakers face a compounding strategic dilemma: as extreme weather events intensify, where should scarce resilience budgets go — preventing disasters through upgraded infrastructure, or managing them through stronger emergency response? This project analyzes that question through the lens of UN SDG 11 and the Sendai Framework for Disaster Risk Reduction, drawing on four datasets spanning 70 years of U.S. disaster declarations, global economic damage records, federal mitigation spending, and the World Risk Index.
 
-The economic case for prevention appears compelling: research consistently demonstrates that $1 invested in pre-disaster hazard mitigation avoids at least $6 in disaster response and rebuilding costs. However, the case for enhanced emergency response is equally compelling and addresses different but critical vulnerabilities. No infrastructure can be hardened against all possible scenarios, especially as climate change introduces unprecedented nonstationary conditions. When infrastructure fails, effective emergency response saves lives and accelerates recovery. The Sendai Framework explicitly recognizes both imperatives — Priority 3 calls for investing in disaster risk reduction for resilience, while Priority 4 calls for enhancing disaster preparedness for effective response.
+The evidence consistently favors prevention. Global disaster losses have grown from roughly $70 billion annually in the 1980s to over $150 billion today, while hazard mitigation spending has remained reactive and volatile — spiking after catastrophic events then falling back before the investments can compound. Research documents a 6:1 return on pre-disaster mitigation, yet the structural bias of political systems toward visible post-disaster response over invisible prevention keeps that return perpetually unrealized.
 
-The decision is particularly difficult because disasters affect nations inequitably. In 2023, North America suffered the largest absolute losses ($69.57 billion), but this represented only 0.23% of GDP, while Micronesia's $4.3 billion in losses represented 46.1% of subregional GDP. The insurance protection gap stood at $263 billion in 2024 — 63% of total losses left uninsured — with coverage remaining below 1% in countries like Bangladesh, India, and Nigeria. SDG 11's explicit focus on protecting "the poor and people in vulnerable situations" creates a tension between economic efficiency (invest where assets are most valuable) and social equity (protect those most vulnerable to harm).
+The equity dimension complicates the choice significantly. The nations most exposed to disaster risk — Small Island Developing States like Vanuatu, Tonga, and the Solomon Islands — are precisely those with the least fiscal capacity to fund either infrastructure or response. Any investment strategy that follows economic efficiency alone will flow resources to wealthy nations with high absolute losses, not to the populations SDG 11 is designed to protect.
 
-The governance architecture has expanded significantly: the number of countries with national disaster risk reduction strategies grew from 57 in 2015 to 131 by October 2024 under the Sendai Framework. But implementation lags far behind policy adoption. As of March 2024, only 64% of Small Island Developing States and 60% of Least Developed Countries had national DRR strategies, and even among those that do, a significant portion of disaster-related funding remains focused on response rather than prevention. With the Sendai Framework approaching its 2030 expiration and over 1.2 billion additional people expected to live in cities by 2050, the choices made now will shape whether growing urban populations face compounding disaster risk or improving resilience.
-
----
-
-## Milestone 2: Data Exploration & System Mapping
-
-### Data Sources
-
-Four datasets were used for the exploratory data analysis. Full source documentation is available in [data/README.md](data/README.md), and the data preparation process is documented in [Wrangling.md](Wrangling.md).
-
-1. **FEMA Disaster Declarations Summaries** — All federally declared disasters in the U.S. from 1953 to 2024 (OpenFEMA)
-2. **Global Economic Damage from Natural Disasters** — Economic damage by disaster type by year, 1900–present (Our World in Data / EM-DAT)
-3. **FEMA Hazard Mitigation Assistance Projects** — Project-level data on federal mitigation grants (OpenFEMA)
-4. **World Risk Index** — Country-level disaster risk, exposure, and vulnerability scores, 2011–2021 (World Risk Report)
-
-### APA Citations
-
-Federal Emergency Management Agency. (2026). *OpenFEMA dataset: Disaster declarations summaries — v2*. U.S. Department of Homeland Security. https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2
-
-EM-DAT, CRED / UCLouvain. (2025). *The international disasters database*. Centre for Research on the Epidemiology of Disasters. Retrieved from https://ourworldindata.org/grapher/economic-damage-from-natural-disasters
-
-Federal Emergency Management Agency. (2026). *OpenFEMA dataset: Hazard mitigation assistance projects — v4*. U.S. Department of Homeland Security. https://www.fema.gov/openfema-data-page/hazard-mitigation-assistance-projects-v4
-
-Bündnis Entwicklung Hilft & Ruhr University Bochum. (2021). *World Risk Index*. Retrieved from https://www.kaggle.com/datasets/tr1gg3rtrash/global-disaster-risk-index-time-series-dataset
+The recommendation is a sustained, equity-weighted prevention-first investment strategy, conditioned on risk-informed urban planning reform and structured to survive electoral cycles — paired with maintained emergency response capacity targeted at residual and equity-priority risk.
 
 ---
 
-### Exploratory Data Analysis
+## Table of Contents
 
-#### Figure 1: FEMA Disaster Declarations by Incident Type (1953–2024)
+1. [Background](#background)
+2. [Data Sources](#data-sources)
+3. [Exploratory Findings](#exploratory-findings)
+4. [System Dynamics](#system-dynamics)
+5. [Analysis](#analysis)
+6. [Recommendations](#recommendations)
+7. [Limitations and Future Work](#limitations-and-future-work)
+8. [References](#references)
+
+---
+
+## Background
+
+Full decision context, literature review, and policy framework summary: [Background.md](Background.md)
+
+Key context: global disaster costs now exceed $2.3 trillion annually when cascading costs are included, up from $70–80 billion per year in 1970–2000. The Sendai Framework's 2030 deadline is approaching with implementation lagging policy adoption. Over 1.2 billion additional people will live in cities by 2050 — making urban resilience investment decisions made today consequential for decades.
+
+---
+
+## Data Sources
+
+Four datasets were used. Full source documentation is in [data/README.md](data/README.md). Data preparation is documented in [Wrangling.md](Wrangling.md).
+
+| Dataset | Source | Coverage |
+|---|---|---|
+| FEMA Disaster Declarations Summaries | OpenFEMA | U.S., 1953–2024 |
+| Global Economic Damage from Natural Disasters | Our World in Data / EM-DAT | Global, 1900–present |
+| FEMA Hazard Mitigation Assistance Projects | OpenFEMA | U.S., 1989–2024 |
+| World Risk Index | Bündnis Entwicklung Hilft / Ruhr University | Global, 2011–2021 |
+
+---
+
+## Exploratory Findings
+
+### Figure 1: FEMA Disaster Declarations by Incident Type (1953–2024)
 
 ![Disaster Declarations Over Time](img/viz1-disaster-frequency.png)
 
-The number of FEMA disaster declarations has increased dramatically over the past seven decades. The stacked bars reveal that severe storms, hurricanes, and floods consistently drive the bulk of declarations, while fire/wildfire declarations have grown noticeably since the 2000s. The 5-year rolling average line shows a clear upward trajectory that accelerated sharply around 2010. The massive spike around 2020 is largely attributable to COVID-19 biological declarations layered on top of an already elevated weather disaster baseline — the chart annotates this to avoid misinterpretation. Even excluding the COVID surge, the underlying weather-related trend is unmistakably upward. This directly illustrates the "growth" pressure in the Growth and Underinvestment archetype — disaster demand is increasing faster than the infrastructure built to withstand it. For the decision-maker, this means the status quo is unsustainable: whether the investment goes to prevention or response, the current level of either is insufficient for the volume of disasters now occurring.
+Disaster declarations have more than tripled since the 1980s, driven by severe storms, hurricanes, and floods. The 5-year rolling average shows a clear upward trajectory that accelerated around 2010. The COVID-19 surge (~2020) is annotated to avoid misinterpretation — even excluding it, the weather-related trend is unmistakably upward. This is the "growth" pressure in the Growth and Underinvestment system archetype: disaster demand is increasing faster than the infrastructure built to withstand it.
 
-#### Figure 2: Global Economic Damage from Weather-Related Disasters (1980–2025)
+### Figure 2: Global Economic Damage from Weather-Related Disasters (1980–2025)
 
 ![Economic Damage Over Time](img/viz2-economic-damage.png)
 
-Global economic losses from weather-related disasters have escalated sharply, particularly since the 1990s. The 5-year rolling average shows a clear upward trajectory, with floods and extreme weather events accounting for the largest share of damages. The annotated reference points on the chart highlight the acceleration documented in the GAR 2025: average annual costs of roughly $70 billion in the 1980s grew to approximately $180 billion by the 2000s, with the 2017 hurricane season (Harvey, Irma, Maria) driving a peak near $417 billion. Wildfire damages have also become increasingly visible in recent years. This matters for the decision because rising costs consume the budgets that could fund either infrastructure upgrades or response capacity, activating the B1 (Budget Constraint) balancing loop in the CLD. Every dollar spent on recovery is a dollar unavailable for prevention.
+Global economic losses from weather-related disasters have escalated sharply, with floods and extreme weather events accounting for the largest share. The 5-year rolling average now trends above $150 billion annually. Key reference points — $70B (1980s average), $180B (2000s average), $417B (2017 peak) — confirm the GAR 2025's documented acceleration. Every dollar spent on disaster recovery is a dollar unavailable for prevention.
 
-#### Figure 3: FEMA Disaster Declarations vs. Federal Hazard Mitigation Spending (1989–2024)
+### Figure 3: FEMA Declarations vs. Federal Hazard Mitigation Spending (1989–2024)
 
 ![Mitigation vs Disasters](img/viz3-mitigation-vs-disasters.png)
 
-This dual-axis chart overlays disaster declaration counts (3-year average) against federal hazard mitigation spending (3-year average) from 1989 to 2024. The subtitle says it plainly: spending volatility does not match disaster growth. Disaster declarations have trended steadily upward, while mitigation spending has swung erratically — spiking after major events like Katrina, Sandy, and the Harvey/Irma/Maria season, then falling back. This reactive spending pattern is the core evidence for the "Underinvestment" half of the Growth and Underinvestment archetype, and it also illustrates the Shifting the Burden dynamic: mitigation funding is driven by the response cycle rather than by a sustained prevention strategy. The shaded gap between the two curves visually represents the structural mismatch between growing disaster demand and inconsistent prevention investment. For policymakers, this suggests that current mitigation investment levels are structurally insufficient to bend the disaster cost curve downward.
+Disaster declarations trend steadily upward while mitigation spending swings erratically — spiking after Katrina, Sandy, and Harvey/Irma/Maria, then falling back. This reactive pattern is the core evidence for both the Growth and Underinvestment archetype and the Shifting the Burden dynamic: investment follows collapse rather than preventing it. The structural mismatch between growing disaster demand and inconsistent prevention investment is the central policy failure this project addresses.
 
-#### Figure 4: Disaster Exposure vs. Lack of Coping Capabilities by Country (2021)
+### Figure 4: Disaster Exposure vs. Lack of Coping Capabilities by Country (2021)
 
 ![Vulnerability Scatter](img/viz4-vulnerability-scatter.png)
 
-This scatter plot reveals the global inequity at the heart of the infrastructure vs. response decision. Countries in the upper-right quadrant — high exposure combined with a severe lack of coping capabilities — are disproportionately Small Island Developing States like Vanuatu, Tonga, and Antigua and Barbuda. These nations face the greatest disaster risk but have the least capacity to invest in either infrastructure or response. The labeled countries in that quadrant (including the Solomon Islands, Guyana, and Dominica) are exactly the populations SDG 11 is designed to protect. Meanwhile, countries clustered in the lower-left enjoy both lower exposure and stronger coping capabilities — typically wealthier nations that have invested in resilience over decades. This pattern directly supports the SDG 11 equity argument: the communities most in need of disaster protection are the least able to fund it. For the decision-maker, this means that investment strategies must explicitly address equity — otherwise, infrastructure investments will flow to where assets are most valuable, not where people are most vulnerable.
+Countries in the upper-right quadrant — high exposure combined with a severe lack of coping capabilities — are disproportionately Small Island Developing States: Vanuatu, Tonga, Solomon Islands, Dominica, Antigua and Barbuda. These nations face the greatest disaster risk with the least capacity to invest in either infrastructure or response. In 2023, North America suffered $69.57 billion in losses (0.23% of GDP), while Micronesia's $4.3 billion represented 46.1% of subregional GDP. SDG 11's equity mandate requires explicitly addressing this gap.
 
 ---
 
-## Milestone 3: Systems Analysis (Path A)
+## System Dynamics
 
-See **[Analysis.md](Analysis.md)** for the full Milestone 3 deliverable, which includes:
+### Final Causal Loop Diagram
 
-- **System Archetype Identification:** Growth and Underinvestment (primary) and Shifting the Burden (secondary), mapped to the global disaster resilience system through the lens of SDG 11 and the Sendai Framework, with supporting evidence from the GAR 2025 and international disaster loss data
-- **Three Scenario Narratives:** Status Quo (Sendai Framework expires without structural change), Infrastructure-First Investment (prevention priority), and Integrated Resilience (balanced portfolio with equity focus) — each tracing system evolution over 5–10 years with reference to CLD feedback loops and SDG 11 indicators
-- **Leverage Point Analysis:** Risk-informed urban planning linked to financial incentives as the highest-leverage intervention, operating on the creation of new risk rather than management of existing risk
-- **Implications for the Decision:** Synthesis connecting the analysis to policymakers' strategic choice, previewing the Milestone 4 recommendation
+![Final CLD](img/cld-final.png)
 
-## Initial Causal Loop Diagram
+### CLD Explanation
 
-![Draft CLD](img/cld-draft.png)
+The CLD maps four key relationships in the disaster resilience system:
 
-https://github.com/bfinucane04/ns-storm.git
+**R1 — Infrastructure Investment Spiral (reinforcing):** Infrastructure investment builds infrastructure quality, which reduces disaster severity, which lowers recovery costs, which frees budget for further investment. This virtuous cycle requires sustained commitment to activate — Figure 3 shows it has never been allowed to run long enough to compound.
+
+**R2 — Emergency Response Spiral (reinforcing):** Response investment builds emergency response capacity, which reduces the per-event cost of disasters, which lowers recovery costs, which frees budget for further response investment. This loop addresses consequences rather than causes — it does not reduce disaster frequency.
+
+**B1 — Budget Constraint (balancing):** Recovery costs drain the federal and local budget, crowding out both infrastructure and response investment. This is the central constraint throttling both reinforcing loops, and the mechanism through which the Growth and Underinvestment archetype operates. The dashed line in the CLD highlights it as the key limiting relationship.
+
+**Exogenous driver — Climate Change Intensity:** Climate change intensifies both disaster frequency and disaster severity independently of policy decisions, increasing the urgency of activating R1 before the B1 constraint tightens further.
+
+The structural insight: both R1 and R2 are constrained by the same B1 mechanism. Choosing one over the other does not escape the constraint. The highest-leverage intervention — marked on the CLD — is risk-informed urban planning linked to financial incentives, which reduces the rate of new risk creation and gradually weakens B1 from the demand side.
+
+Full systems analysis including archetype identification, three scenario narratives, and leverage point analysis: [Analysis.md](Analysis.md)
+
+---
+
+## Recommendations
+
+**Bottom line: invest in prevention first, with sustained multi-year commitment and explicit equity targeting.**
+
+The 6:1 return on pre-disaster mitigation is well-documented. Figures 2 and 3 together show the cost of the alternative: $150B+ in annual losses and a mitigation spending pattern that has never been allowed to compound. Emergency response investment is necessary but insufficient — it manages consequences of a risk level that continues to rise.
+
+**Specific actions for policymakers:**
+
+1. **Establish a 10-year prevention investment baseline** — set mitigation funding as a fixed percentage of GDP, insulated from post-disaster supplementals, to break the reactive spending cycle. Target: double current U.S. federal mitigation spending levels, sustained across electoral cycles through multi-year authorization.
+
+2. **Condition disaster financing on risk-informed planning** — make updated land use regulations and hazard exposure assessments a prerequisite for federal grants and post-disaster recovery funds. This is the highest-leverage intervention available: it slows the creation of new risk rather than managing past decisions.
+
+3. **Direct equity-weighted investment to high-vulnerability nations** — allocate at minimum 40% of multilateral resilience funding to high-exposure, low-coping-capacity countries (Figure 4 upper-right quadrant), paired with technical assistance.
+
+4. **Maintain emergency response as a residual capacity** — sized to manage risk that infrastructure investment cannot eliminate, with particular attention to the communities in Figure 4's most vulnerable quadrant.
+
+**Key uncertainties:** Political sustainability of prevention commitment across electoral cycles; risk that planning reform becomes exclusionary zoning rather than genuine resilience; variance in mitigation investment returns under accelerating climate change.
+
+Full recommendations with supporting evidence: [recommendations.md](recommendations.md)
+
+---
+
+## Limitations and Future Work
+
+**Data limitations:** U.S. FEMA datasets reflect one national context; generalization to other governance systems requires caution. Economic damage figures are in nominal dollars, so the upward trend overstates the real increase to some degree (though the magnitude of growth far exceeds inflation). World Risk Index data ends in 2021. FEMA mitigation spending reflects federal share obligated, not total investment including state and local match.
+
+**Analytical limitations:** The systems analysis identifies structural patterns but does not model quantitative dynamics — the scenario narratives are qualitative. The 6:1 mitigation return is an average that masks high variance across project types and geographies. The equity analysis identifies which nations are most vulnerable but does not model how investment would need to be distributed to close the protection gap.
+
+**Future work:** A quantitative system dynamics model (Vensim or equivalent) would allow scenario simulations with explicit feedback delays and sensitivity analysis. A cost-benefit analysis at the jurisdiction level — accounting for local hazard profiles, infrastructure age, and fiscal capacity — would sharpen the investment targeting recommendation. Longitudinal tracking of the World Risk Index post-2021 would allow assessment of whether current policy trajectories are improving or worsening global vulnerability scores.
+
+---
+
+## References
+
+Federal Emergency Management Agency. (2026). *OpenFEMA dataset: Disaster declarations summaries — v2*. U.S. Department of Homeland Security. https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2
+
+EM-DAT, CRED / UCLouvain. (2025). *The international disasters database*. Centre for Research on the Epidemiology of Disasters. https://ourworldindata.org/grapher/economic-damage-from-natural-disasters
+
+Federal Emergency Management Agency. (2026). *OpenFEMA dataset: Hazard mitigation assistance projects — v4*. U.S. Department of Homeland Security. https://www.fema.gov/openfema-data-page/hazard-mitigation-assistance-projects-v4
+
+Bündnis Entwicklung Hilft & Ruhr University Bochum. (2021). *World Risk Index*. https://www.kaggle.com/datasets/tr1gg3rtrash/global-disaster-risk-index-time-series-dataset
+
+United Nations Office for Disaster Risk Reduction. (2025). *Global Assessment Report on Disaster Risk Reduction 2025*. UNDRR.
+
+United Nations. (2015). *Sendai Framework for Disaster Risk Reduction 2015–2030*. UNDRR.
