@@ -14,89 +14,61 @@ The decision is particularly difficult because disasters affect nations inequita
 
 The governance architecture has expanded significantly: the number of countries with national disaster risk reduction strategies grew from 57 in 2015 to 131 by October 2024 under the Sendai Framework. But implementation lags far behind policy adoption. As of March 2024, only 64% of Small Island Developing States and 60% of Least Developed Countries had national DRR strategies, and even among those that do, a significant portion of disaster-related funding remains focused on response rather than prevention. With the Sendai Framework approaching its 2030 expiration and over 1.2 billion additional people expected to live in cities by 2050, the choices made now will shape whether growing urban populations face compounding disaster risk or improving resilience.
 
+---
+
+## Milestone 2: Data Exploration & System Mapping
+
+### Data Sources
+
+Four datasets were used for the exploratory data analysis. Full source documentation is available in [data/README.md](data/README.md), and the data preparation process is documented in [Wrangling.md](Wrangling.md).
+
+1. **FEMA Disaster Declarations Summaries** — All federally declared disasters in the U.S. from 1953 to 2024 (OpenFEMA)
+2. **Global Economic Damage from Natural Disasters** — Economic damage by disaster type by year, 1900–present (Our World in Data / EM-DAT)
+3. **FEMA Hazard Mitigation Assistance Projects** — Project-level data on federal mitigation grants (OpenFEMA)
+4. **World Risk Index** — Country-level disaster risk, exposure, and vulnerability scores, 2011–2021 (World Risk Report)
+
+### APA Citations
+
+Federal Emergency Management Agency. (2026). *OpenFEMA dataset: Disaster declarations summaries — v2*. U.S. Department of Homeland Security. https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2
+
+EM-DAT, CRED / UCLouvain. (2025). *The international disasters database*. Centre for Research on the Epidemiology of Disasters. Retrieved from https://ourworldindata.org/grapher/economic-damage-from-natural-disasters
+
+Federal Emergency Management Agency. (2026). *OpenFEMA dataset: Hazard mitigation assistance projects — v4*. U.S. Department of Homeland Security. https://www.fema.gov/openfema-data-page/hazard-mitigation-assistance-projects-v4
+
+Bündnis Entwicklung Hilft & Ruhr University Bochum. (2021). *World Risk Index*. Retrieved from https://www.kaggle.com/datasets/tr1gg3rtrash/global-disaster-risk-index-time-series-dataset
+
+---
+
+### Exploratory Data Analysis
+
+#### Figure 1: U.S. Federal Disaster Declarations by Year (1953–2024)
+
+![Disaster Declarations Over Time](img/viz1-disaster-frequency.png)
+
+The number of federally declared disasters in the United States has increased dramatically over the past seven decades. From the 1950s through the 1980s, annual declarations rarely exceeded 40 per year. Since the mid-1990s, the count has regularly surpassed 60, with recent years reaching well above 100. The 5-year moving average shows a clear upward trajectory that has accelerated since approximately 2010. This trend directly illustrates the "growth" pressure in the Growth and Underinvestment archetype — disaster demand is increasing faster than the infrastructure built to withstand it. For the decision-maker, this means the status quo is unsustainable: whether the investment goes to prevention or response, the current level of either is insufficient for the volume of disasters now occurring.
+
+#### Figure 2: Global Economic Damage from Weather-Related Disasters (1960–2024)
+
+![Economic Damage Over Time](img/viz2-economic-damage.png)
+
+Global economic losses from weather-related disasters have escalated sharply, particularly since the 1990s. Floods and extreme weather events (storms, hurricanes, tornadoes) account for the largest share of damages, with individual spike years driven by catastrophic events like Hurricane Katrina (2005), the 2011 Thailand floods, and Hurricanes Harvey/Irma/Maria (2017). The upward trend in this chart supports the cost escalation documented in the GAR 2025 — direct disaster costs grew from $70–80 billion per year (1970–2000) to $180–200 billion (2001–2020). This matters for the decision because rising costs consume the budgets that could fund either infrastructure upgrades or response capacity, activating the B1 (Budget Constraint) balancing loop in the CLD. Every dollar spent on recovery is a dollar unavailable for prevention.
+
+#### Figure 3: FEMA Hazard Mitigation Projects and Funding by Year
+
+![Mitigation Investment](img/viz3-mitigation-investment.png)
+
+This chart shows the volume of FEMA hazard mitigation projects and the associated federal funding over time. Mitigation activity has grown since the program's early years, but funding levels have fluctuated significantly and have not kept pace with the accelerating disaster trend shown in Figure 1. The gap between rising disaster frequency and relatively flat or inconsistent mitigation investment is the core evidence for the "Underinvestment" half of the Growth and Underinvestment archetype. When mitigation funding spikes, it is often in response to a major disaster year — a reactive pattern consistent with the Shifting the Burden dynamic, where response drives the budget cycle rather than proactive prevention. For policymakers, this suggests that current mitigation investment levels are structurally insufficient to bend the disaster cost curve downward.
+
+#### Figure 4: Global Disaster Exposure vs. Vulnerability (2021)
+
+![Vulnerability Scatter](img/viz4-vulnerability-scatter.png)
+
+This scatter plot reveals the global inequity at the heart of the infrastructure vs. response decision. Countries in the upper-right quadrant — high exposure and high vulnerability — are disproportionately Small Island Developing States and Least Developed Countries. These nations face the greatest disaster risk but have the least capacity to invest in either infrastructure or response. Meanwhile, countries with high exposure but low vulnerability (lower-right) tend to be wealthier nations that have invested in resilience. This pattern directly supports the SDG 11 equity argument: the communities most in need of disaster protection are the least able to fund it. For the decision-maker, this means that investment strategies must explicitly address equity — otherwise, infrastructure investments will flow to where assets are most valuable, not where people are most vulnerable.
+
+---
+
 ## Initial Causal Loop Diagram
 
 ![Draft CLD](img/cld-draft.png)
 
----
-
-## 📊 Milestone 2: Data Exploration & System Mapping
-
-### 📁 Data Summary  
-To further support the decision between investing in storm infrastructure or emergency response capacity, multiple datasets were analyzed focusing on disaster frequency, economic damages, infrastructure performance, and recovery outcomes. These datasets include historical records of extreme weather events, financial damage estimates, outage durations, and response effectiveness metrics.  
-
-The data was cleaned and standardized through processes such as handling missing values, aligning date formats, aggregating time-based trends, and merging datasets for comparative analysis. This allowed for a clearer and more reliable understanding of how disaster impacts evolve over time and how different strategies influence outcomes.
-
----
-
-### 📈 Visualization 1: Disaster Frequency Over Time  
-![Disaster Frequency](img/viz1.png)
-
-**Insight:**  
-This visualization shows a clear upward trend in the frequency of extreme weather events over time.  
-
-**Why it matters:**  
-As disasters become more frequent, relying solely on emergency response becomes increasingly difficult. This strengthens the case for proactive infrastructure investment to reduce long-term risk and system strain.
-
----
-
-### 📊 Visualization 2: Disaster Damages Over Time  
-![Disaster Damages](img/viz2.png)
-
-**Insight:**  
-Economic damages from disasters have increased significantly over time, indicating that events are becoming both more frequent and more severe.  
-
-**Why it matters:**  
-This reinforces the financial importance of prevention. Infrastructure investment can reduce long-term costs by minimizing damage before disasters occur.
-
----
-
-### 🔗 Visualization 3: Outage Duration vs. Damage  
-![Outage vs Damage](img/viz3.png)
-
-**Insight:**  
-There is a positive relationship between outage duration and economic damage, where longer outages are associated with greater losses.  
-
-**Why it matters:**  
-This highlights the value of emergency response systems. Faster recovery reduces outage duration and limits total economic impact, demonstrating the importance of maintaining strong response capabilities.
-
----
-
-### 💰 Visualization 4: Mitigation Investment vs. Cost Savings  
-![Mitigation vs Savings](img/viz4.png)
-
-**Insight:**  
-Higher investment in mitigation and infrastructure leads to significantly greater avoided losses.  
-
-**Why it matters:**  
-This supports the widely accepted finding that preventative investment delivers strong returns, making infrastructure upgrades a highly effective long-term strategy.
-
----
-
-### 🔁 Refined Causal Loop Diagram  
-![Refined CLD](img/cld-refined.png)
-
-The refined causal loop diagram expands on the initial model by incorporating insights from the data analysis. It illustrates how disaster frequency, infrastructure resilience, emergency response capacity, economic damage, and recovery time interact within the system.
-
----
-
-### 🔄 Key Feedback Loops  
-
-**Reinforcing Loop (R1): Infrastructure Degradation Cycle**  
-Declining infrastructure quality increases disaster impact, which leads to greater economic damage. This reduces available funding for infrastructure improvements, further weakening resilience over time.
-
-**Balancing Loop (B1): Emergency Response Stabilization**  
-As disaster impact increases, emergency response efforts intensify, reducing recovery time and limiting additional damage. This helps stabilize the system even when infrastructure fails.
-
-**Reinforcing Loop (R2): Preventative Investment Cycle**  
-Increased investment in infrastructure improves resilience, which reduces disaster damage. Lower damage preserves financial resources, allowing for continued investment and strengthening long-term outcomes.
-
----
-
-### 🎯 Connection to Decision  
-
-The data analysis and system mapping demonstrate that both infrastructure investment and emergency response play essential but distinct roles. Infrastructure reduces the likelihood and severity of disaster impacts, while emergency response mitigates damage after events occur.  
-
-However, the increasing frequency and cost of disasters suggest that a reactive approach alone is not sustainable. The reinforcing benefits and strong return on investment associated with infrastructure improvements indicate that prevention should be prioritized.  
-
-At the same time, emergency response remains necessary to manage unavoidable system failures. Therefore, the most effective strategy is to prioritize infrastructure investment while maintaining sufficient emergency response capacity to ensure overall community resilience.
+https://github.com/bfinucane04/ns-storm.git
